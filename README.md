@@ -1,4 +1,4 @@
-# 🧠 String Analyzer Service
+# String Analyzer Service
 
 A **RESTful API built with NestJS** that analyzes and stores string data, computing various string properties such as **length**, **palindrome status**, **unique character count**, **word count**, and more.
 
@@ -6,7 +6,7 @@ This project was developed as part of the **HNG Internship 13 — Backend Task (
 
 ---
 
-## 🎯 Objective
+## Objective
 
 The **String Analyzer Service** is designed to:
 
@@ -17,7 +17,7 @@ The **String Analyzer Service** is designed to:
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Technology     | Purpose                                     |
 | -------------- | ------------------------------------------- |
@@ -29,22 +29,22 @@ The **String Analyzer Service** is designed to:
 
 ---
 
-## ⚙️ Setup & Installation
+## Setup & Installation
 
-### 1️⃣ Clone the Repository
+### Clone the Repository
 
 ```bash
 git clone https://github.com/iamarvy/string-analyzer-service.git
 cd string-analyzer-service
 ```
 
-### 2️⃣ Install Dependencies
+### Install Dependencies
 
 ```bash
 pnpm install
 ```
 
-### 3️⃣ Set Up Environment Variables
+### Set Up Environment Variables
 
 Create a `.env` file in the root directory and define:
 
@@ -53,9 +53,9 @@ MONGODB_URI=your_mongodb_connection_uri
 PORT=3000
 ```
 
-> 💡 If `PORT` is not provided, the application defaults to **3000**.
+> If `PORT` is not provided, the application defaults to **3000**.
 
-### 4️⃣ Start the Development Server
+### Start the Development Server
 
 ```bash
 docker compose up -d
@@ -63,24 +63,26 @@ pnpm start:dev
 ```
 
 Once running, visit:
-🔗 [http://localhost:3000](http://localhost:3000)
+[http://localhost:3000](http://localhost:3000)
 
 ---
 
-## 📡 API Endpoints
+## API Endpoints
 
-| Method     | Endpoint       | Description                                      |
-| ---------- | -------------- | ------------------------------------------------ |
-| **POST**   | `/strings`     | Analyze and store a new string                   |
-| **GET**    | `/strings`     | Retrieve all analyzed strings (supports filters) |
-| **GET**    | `/strings/:id` | Retrieve a specific string analysis by ID        |
-| **DELETE** | `/strings/:id` | Delete an analyzed string record                 |
+| Method     | Endpoint                              | Description                                      |
+| ---------- | ------------------------------------- | ------------------------------------------------ |
+| **POST**   | `/strings`                            | Analyze and store a new string                   |
+| **GET**    | `/strings`                            | Retrieve all analyzed strings (supports filters) |
+| **GET**    | `/strings/:id`                        | Retrieve a specific string analysis by ID        |
+| **DELETE** | `/strings/:id`                        | Delete an analyzed string record                 |
+| **GET**    | `/strings/filter-by-natural-language` | Filter strings using natural language queries    |
+
 
 ---
 
-## 🗾 Example Responses
+## Example Responses
 
-### ➕ **POST** `/strings`
+### **POST** `/strings`
 
 **Request:**
 
@@ -114,7 +116,7 @@ Once running, visit:
 
 ---
 
-### 🔍 **GET** `/strings`
+### **GET** `/strings`
 
 **Response:**
 
@@ -148,7 +150,7 @@ Once running, visit:
 
 ---
 
-## 🥮 Supported Filters
+## Supported Filters
 
 You can filter results via query parameters, for example:
 
@@ -157,7 +159,7 @@ GET /strings?is_palindrome=true
 GET /strings?min_length=5&max_length=20
 ```
 
-Or using **natural language queries** (if implemented), such as:
+Or using **natural language queries** such as:
 
 ```
 GET /strings?q=strings that are palindromes and longer than 5
@@ -165,7 +167,7 @@ GET /strings?q=strings that are palindromes and longer than 5
 
 ---
 
-## 🧱 Project Structure
+## Project Structure
 
 ```
 src/
@@ -174,6 +176,8 @@ src/
  │   │   ├── create-string.dto.ts
  │   │   ├── index.dto.ts
  │   │   ├── string-list.dto.ts
+ │   │   ├── string-nlq-list-query.dto.ts
+ │   │   ├── string-nlq-list-response.dto.ts
  │   │   ├── string-query.dto.ts
  │   │   └── string-response.dto.ts
  │   ├── entities/
@@ -187,20 +191,21 @@ src/
 
 ---
 
-## 🚀 Features
+## Features
 
-* ✅ RESTful API architecture
-* ✅ Request validation using `class-validator`
-* ✅ MongoDB persistence via Mongoose
-* ✅ Palindrome detection
-* ✅ Unique character and word counting
-* ✅ Character frequency mapping
-* ✅ Query-based filtering
-* ✅ Clean and consistent DTO responses
+* RESTful API architecture
+* Request validation using `class-validator`
+* MongoDB persistence via Mongoose
+* Palindrome detection
+* Unique character and word counting
+* Character frequency mapping
+* Query-based filtering
+* Clean and consistent DTO responses
+* Natural Language Filtering
 
 ---
 
-## 🧑‍💻 Author
+## Author
 
 **Oluwaseyi Oke**
 🌐 [GitHub](https://github.com/iamarvy)
