@@ -5,13 +5,20 @@ import {
   IsString,
   Length,
 } from 'class-validator';
-import { Type } from 'class-transformer';
+import { Transform } from 'class-transformer';
+import { BadRequestException } from '@nestjs/common';
 
 export class StringQueryDto {
   @IsOptional()
   @IsBoolean()
-  @Type(() => Boolean)
-  isPalindrome?: boolean;
+  @Transform(({ value }) => {
+    if (value === 'true') return true;
+    if (value === 'false') return false;
+    throw new BadRequestException(
+      `Invalid value '${value}' for is_palindrome. Expected "true" or "false".`,
+    );
+  })
+  is_palindrome?: boolean;
 
   @IsOptional()
   @IsInt()
