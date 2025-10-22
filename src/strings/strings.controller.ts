@@ -8,8 +8,7 @@ import {
   Query,
 } from '@nestjs/common';
 import { StringsService } from './strings.service';
-import { CreateStringDto } from './dto/create-string.dto';
-import { StringQueryDto } from './dto/string-query.dto';
+import { CreateStringDto, StringQueryDto, StringNLQueryDto } from './dto';
 
 @Controller('strings')
 export class StringsController {
@@ -23,6 +22,12 @@ export class StringsController {
   @Get()
   findAll(@Query() query: StringQueryDto) {
     return this.stringsService.findAll(query);
+  }
+
+  @Get('filter-by-natural-language')
+  findAllByNLQuery(@Query() { query }: StringNLQueryDto) {
+    console.log(query);
+    return this.stringsService.filterByNaturalLanguage(query);
   }
 
   @Get(':value')

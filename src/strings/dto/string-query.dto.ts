@@ -22,18 +22,18 @@ export class StringQueryDto {
 
   @IsOptional()
   @IsInt()
-  min_length: number;
+  min_length?: number;
 
   @IsOptional()
   @IsInt()
-  max_length: number;
+  max_length?: number;
 
   @IsOptional()
   @IsInt()
-  word_count: number;
+  word_count?: number;
 
   @IsOptional()
   @IsString()
   @Length(1, 1, { message: 'contains_character must be exactly one character' })
-  contains_character: string;
+  contains_character?: string;
 }
